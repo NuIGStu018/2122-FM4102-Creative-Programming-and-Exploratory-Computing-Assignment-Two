@@ -1,0 +1,90 @@
+let circleNum= 9;
+let frameSpeed= 15; 
+function setup() {
+  createCanvas(400, 400);
+  let cirColour= (100, 100, 50)//attempted to have the ellipse's fill as a 
+  // variable.
+  //Didn't work, any attempt, regardless of value used would 
+  // always create a dark/near black colour.
+  // Hoped it would allow for a dynamic colour over time. 
+  //Can probebly cut, but as it stands,  it works fine, so I'll let it be.
+}
+frameRate=frameSpeed // Hoped to make the framerate dynamic, 
+//Not sure how well this works.
+// Dely1/2 don't seem to register any error, but 3/4/5 do.
+// Still functions though, will leave as it in case it dulls effect.
+
+setTimeout(dely1, 6000);
+setTimeout(dely2, 12000);
+setTimeout(dely3, 18000);
+setTimeout(dely4, 24000);
+setTimeout(dely5, 30000);
+function dely1(){
+ circleNum= circleNum+15;
+ frameSpeed= frameSpeed-1;
+// background (random (00,20)); Tried to have the background change colour
+// as program progressed, this lead to a flickering effect.
+// Too distracting, better off cut.
+}
+function dely2 (){
+  circleNum= circleNum+20;
+  frameSpeed= frameSpeed-1;
+ // background (random(20,50));
+}
+function dely3(){
+circleNum= circleNum+55;
+framespeed= framespeed-1;  
+//background (random(50,100));  
+}
+function dely4 (){
+  circleNum= circleNum+9;
+  framespeed=framespeed-1; 
+//background (random(100, 150));
+}
+function dely5 (){
+  circleNum= circleNum+9;
+  framespeed= framespeed-1;
+//background (random(150,175));
+}
+function draw() {
+  background(50);
+}
+
+function setup() {
+ createCanvas(windowWidth, windowHeight);
+ frameRate (frameSpeed);  
+}
+function draw() {
+  background(250, 180);  
+  drawElements();
+
+}
+
+
+function drawElements() {
+  let num = circleNum;
+  push();
+  translate(width/2, height/2);
+  let cir = 360/num*(frameCount%num);
+  rotate(radians(cir));
+  noStroke();
+  fill(150, 30, 30);
+  ellipse(50, 50, 22, 22);
+  pop();
+  stroke(255, 255, 0, 18);
+}
+
+
+
+//if (frameCount > 600) 
+//else if (frameCount > 1200)
+//else if (frameCount > 1800) 
+//else (frameCount > 2400); {
+//leftover junk code from a failed attempt to build a delayed response,
+// it didn't work since it didn't reconise/register framecount,
+// entire program would then stall and refuse to draw because of this.
+//Conceptially, it fine as far as I can tell, but it just won't work. 
+//}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
